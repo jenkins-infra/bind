@@ -1,0 +1,3 @@
+This directory gets mounted into `/etc/bind.local` during `make run` to monkey-test bind container
+
+The production zone data is defined in `jenkins-infra` module
