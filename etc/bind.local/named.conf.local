@@ -1,4 +1,0 @@
-zone "jenkins-ci.org" {
-  type master;
-  file "/etc/bind.local/jenkins-ci.org.zone";
-};
