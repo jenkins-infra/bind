@@ -1,6 +1,6 @@
 #!groovy
 
-def imageName = 'rtyler/bind'
+def imageName = 'jenkinsciinfra/bind'
 def imageTag = new Date().format('YMd_HmS')
 
 node('docker') {
