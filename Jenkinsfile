@@ -1,7 +1,7 @@
 #!groovy
 
 def imageName = 'jenkinsciinfra/bind'
-def imageTag = new Date().format('YMd_HmS')
+def imageTag = "build${env.BUILD_NUMBER}"
 
 node('docker') {
     checkout scm
