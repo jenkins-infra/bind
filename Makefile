@@ -12,9 +12,3 @@ run :
 
 tag :
 	docker tag ${IMAGENAME} ${IMAGENAME}:${TAG}
-
-push :
-	docker push ${IMAGENAME}
-
-
-
