@@ -5,6 +5,8 @@ RUN mkdir /var/run/named
 
 EXPOSE 53 53/udp
 
+COPY etc/bind/named.conf.options /etc/bind/named.conf.options
+
 # config files
 VOLUME ["/etc/bind/local"]
 
