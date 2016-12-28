@@ -2,9 +2,10 @@
 
 def imageName = 'jenkinsciinfra/bind'
 
-/* Only keep the 10 most recent builds. */
-properties([[$class: 'jenkins.model.BuildDiscarderProperty',
-                strategy: [$class: 'LogRotator', numToKeepStr: '10']]])
+properties([
+    buildDiscarder(logRotator(numToKeepStr: '5')),
+    pipelineTriggers([[$class:"SCMTrigger", scmpoll_spec:"H/15 * * * *"]]),
+])
 
 node('docker') {
     checkout scm
