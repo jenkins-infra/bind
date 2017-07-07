@@ -8,7 +8,9 @@ properties([
 ])
 
 node('docker') {
-    checkout scm
+    stage('Checkout') {
+        checkout scm
+    }
 
     /* Using this hack right now to grab the appropriate abbreviated SHA1 of
      * our current build's commit. We must do this because right now I cannot
@@ -18,10 +20,16 @@ node('docker') {
     shortCommit = readFile('GIT_COMMIT').take(6)
     def imageTag = "${env.BUILD_ID}-${shortCommit}"
 
+    def container
+    stage('Build') {
+        container = docker.build("${imageName}:${imageTag}", '--no-cache --rm .')
+    }
 
-    stage 'Build'
-    def whale = docker.build("${imageName}:${imageTag}", '--no-cache --rm .')
-
-    stage 'Deploy'
-    whale.push()
+    if (infra.isTrusted()) {
+        stage('Publish container') {
+            infra.withDockerCredentials {
+                timestamps { container.push() }
+            }
+        }
+    }
 }
