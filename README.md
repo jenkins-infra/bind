@@ -1,6 +1,6 @@
 # DNS server for jenkins-ci.org
 
-[![Build Status](https://ci.jenkins-ci.org/view/Infrastructure/job/Containers/job/infra_bind/badge/icon)](https://ci.jenkins-ci.org/job/Containers/infra_bind)
+[![Build Status](https://ci.jenkins.io/job/Infra/job/bind/job/master/badge/icon)](https://ci.jenkins.io/job/Infra/job/bind/job/master/)
 
 This container runs DNS server for jenkins-ci.org
 
