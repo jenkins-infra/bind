@@ -1,5 +1,9 @@
 FROM ubuntu:trusty
-RUN apt-get update -q && apt-get install -y bind9 dnsutils
+RUN \
+  apt-get update -q &&\
+  apt-get install -y bind9 dnsutils && \
+  rm -rf /var/lib/apt/lists/*
+
 RUN ln -f -s /etc/bind/local/named.conf.local /etc/bind/
 RUN mkdir /var/run/named
 
